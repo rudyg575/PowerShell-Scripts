@@ -1,0 +1,2 @@
+#Get error/warning/critical entries from a remote computer on a certain day and save to a .txt
+Get-EventLog -ComputerName "LON-SVR1" -LogName System -After "03/14/2022" -Before "03/16/2022" | Where-Object {$_.EntryType -like 'Error' -or $_.EntryType -like 'Warning' -or $_.EntryType -like ‘Critical’} > c:\PATH\15MAR22.txt
