@@ -1,0 +1,15 @@
+#Compare two text files and delete duplicates while creating output file
+
+{
+$file1 = Get-Content c:\path\File1.txt
+$file2 = Get-Content c:\path\File2.txt
+
+$compareParams = @{
+    ReferenceObject = $file1
+        DifferenceObject = $file2
+        }
+Compare-Object @compareParams | 
+Where-Object -Property SideIndicator -eq '=>' |
+Select-Object -ExpandProperty InputObject |
+Out-File -FilePath c:\path\OutputFile.txt
+}
