@@ -1,6 +1,4 @@
-$session = New-PSSession -cn LON-DC1,LON-SVR1 -cred Adatum\administrator
-
-[console]::beep(659,250) ##C
+$session = New-PSSession -cn SERVER1,SERVER2 -cred Adatum\administrator
 Invoke-Command -Session $session -ScriptBlock {w32tm /resync}
 Start-Sleep -Seconds 5
 Invoke-Command -Session $session -ScriptBlock {w32tm /query /status}
